@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta name="theme-color" content="#FFFFFF">
+        <title>Miquelleti</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <!-- Bootstrap JS e Popper.js (necessário para o dropdown) -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+        <style> 
+
+            body {
+                padding-top: 55px; /* Ajuste a altura conforme a altura da sua navbar */
+            }
+
+            /* Estilo para o título com cursor de clique */
+            #titulo {
+            color: #333;
+            transition: color 0.3s ease;
+            }
+
+            #titulo:hover {
+            color: #007bff;
+            }
+
+            /* Transição suave do conteúdo do formulário */
+            #formularioConteudo {
+            transition: max-height 0.5s ease-out;
+            overflow: hidden;
+            }
+            /* estilos RODAPÉ */
+            .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            }
+
+            .footer-left, .footer-center, .footer-right {
+            flex: 1;
+            text-align: center;
+            }
+
+            .footer-logo {
+            max-width: 100px; /* Ajuste o tamanho conforme necessário */
+            margin-bottom: 10px;
+            }
+
+            footer h3, footer p {
+            margin: 5px 0;
+            font-size: 1.2em;
+            color: rgb(97, 4, 4); /* Garante que a cor do texto dentro de h3 e p seja branca */
+            }
+
+            footer i {
+            margin-right: 10px;
+            color: white; /* Garante que o ícone também fique branco */
+            }
+            /* estilo para os cards com efeito hover */
+            .card {
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .card:hover {
+                transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
+            }
+
+            
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            section.bg-light {
+                background-color: #f8f9fa; /* Cor de fundo leve */
+            }
+        
+        
+            p, h2 {
+                color: #333; /* Garante que o texto seja legível */
+            }
+
+            /* Estilos para o Footer */
+           /* Estilo inicial do footer (fora da tela) */
+            footer {
+            background-color: #868484;
+            color: rgb(255, 255, 255);
+            padding: 20px 0;
+            transform: translateY(100px); /* Inicia fora da tela (abaixo) */
+            opacity: 0; /* Inicialmente invisível */
+            transition: transform 0.5s ease, opacity 0.5s ease; /* Transição suave */
+            }
+
+            /* Estilo quando o footer estiver visível */
+            footer.visible {
+            transform: translateY(0); /* Mover para a posição original */
+            opacity: 1; /* Tornar visível */
+            }
+            </style>
+         
+    </head>
+    <body>
+        <!-- Responsive navbar -->
+        <section>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="#mapa">Advocacia Miquelleti</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                            </li>         
+                            <!-- Menu expansível -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categorias
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#sobre"><i class="bi bi-person-circle " style="padding: 5px;"></i> Sobre</a></li>
+                                    <li><a class="dropdown-item" href="#contato"><i class="bi bi-telephone-fill" style="padding: 5px;"></i> Contatos</a></li>
+                                    <li><a class="dropdown-item" href="#servicos"><i class="bi bi-briefcase-fill" style="padding: 5px;"></i> Serviços</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+<!-- Header-->
+<header class="py-5" style="background-image: url('https://tabatamiqueletti.com/wp-content/uploads/2024/06/Design-sem-nome-14.jpg'); background-size: cover; background-position: center;">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-start">
+            <!-- Coluna esquerda para informações -->
+            <div class="col-lg-6 text-left text-dark">
+                <div class="my-5">
+                    <h1 class="display-5 fw-bolder mb-2">Tábata Miqueletti</h1>
+                    <p class="lead text-dark mb-4">Preparada para atender o Brasil todo!</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-start">
+                        <a class="btn btn-dark btn-lg px-4 me-sm-3 text-white" href="#formulario">Me conte seu Problema</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header> 
+<!-- Seção para os SERVIÇOS -->
+<section class="py-5 border-bottom" id="servicos">
+    <div class="container px-5 my-5">
+        <div class="row gx-4 gx-sm-5">
+            <!-- Revisão de Contrato de Financiamentos de Veículos -->
+            <div class="col-12 col-sm-6 col-md-4 mb-4 card-item hidden" id="card1">
+                <div class="card border-dark rounded-3 shadow-lg">
+                    <div class="card-body text-center">
+                        <i class="bi bi-truck fs-1 mb-3"></i>
+                        <h5 class="card-title fw-bolder text-dark">Revisão de Contrato de Financiamentos de Veículos</h5>
+                        <p class="card-text">Auxiliamos quanto ao contrato para resolver problemas com o veículo.</p>
+                        <a href="https://wa.me/5542991318483?text=Olá,%20gostaria%20de%20solicitar%20a%20revisão%20de%20um%20contrato%20de%20financiamento%20de%20veículos." class="btn btn-dark text-white text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-truck me-2"></i> Call to action
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revisão de Contrato de Empréstimo Pessoal -->
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card border-dark rounded-3 shadow-lg">
+                    <div class="card-body text-center">
+                        <i class="bi bi-cash fs-1 mb-3"></i>
+                        <h5 class="card-title fw-bolder text-dark">Revisão de Contrato de Empréstimo Pessoal</h5>
+                        <p class="card-text">Atuamos na revisão de contratos de empréstimos pessoais.</p>
+                        <a href="https://wa.me/5542991318483?text=Olá,%20gostaria%20de%20solicitar%20a%20revisão%20de%20um%20contrato%20de%20financiamento%20de%20veículos." class="btn btn-dark text-white text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-cash me-2"></i> Call to action
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revisão de Contrato de Empréstimo Consignado -->
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card border-dark rounded-3 shadow-lg">
+                    <div class="card-body text-center">
+                        <i class="bi bi-credit-card-2-front fs-1 mb-3"></i>
+                        <h5 class="card-title fw-bolder text-dark">Revisão de Contrato de Empréstimo Consignado</h5>
+                        <p class="card-text">Atuamos na revisão de contratos sobre empréstimos consignados.</p>
+                        <a href="https://wa.me/5542991318483?text=Olá,%20gostaria%20de%20solicitar%20a%20revisão%20de%20um%20contrato%20de%20financiamento%20de%20veículos." class="btn btn-dark text-white text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-credit-card-2-front me-2"></i> Call to action
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revisão de Contrato e Juros Abusivos -->
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card border-dark rounded-3 shadow-lg">
+                    <div class="card-body text-center">
+                        <i class="bi bi-percent fs-1 mb-3"></i>
+                        <h5 class="card-title fw-bolder text-dark">Revisão de Contrato e Juros Abusivos</h5>
+                        <p class="card-text">Atuamos na revisão de contratos com juros abusivos.</p>
+                        <a href="#!" class="btn btn-dark text-white text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-percent me-2"></i> Call to action
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Golpes na Internet -->
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card border-dark rounded-3 shadow-lg">
+                    <div class="card-body text-center">
+                        <i class="bi bi-shield-lock fs-1 mb-3"></i>
+                        <h5 class="card-title fw-bolder text-dark">Golpes na Internet</h5>
+                        <p class="card-text">Atuamos na solução envolvendo golpes na internet.</p>
+                        <a href="https://wa.me/5542991318483?text=Olá,%20gostaria%20de%20solicitar%20a%20revisão%20de%20um%20contrato%20de%20financiamento%20de%20veículos." class="btn btn-dark text-white text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-shield-lock me-2"></i> Call to action
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pensão Alimentícia -->
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card border-dark rounded-3 shadow-lg">
+                    <div class="card-body text-center">
+                        <i class="bi bi-people fs-1 mb-3"></i>
+                        <h5 class="card-title fw-bolder text-dark">Pensão Alimentícia</h5>
+                        <p class="card-text">Atuamos na resolução de problemas com pensão alimentícia.</p>
+                        <a href="https://wa.me/5542991318483?text=Olá,%20gostaria%20de%20solicitar%20a%20revisão%20de%20um%20contrato%20de%20financiamento%20de%20veículos." class="btn btn-dark text-white text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-people me-2"></i> Call to action
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auxílio Maternidade -->
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card border-dark rounded-3 shadow-lg">
+                    <div class="card-body text-center">
+                        <i class="bi bi-gender-female fs-1 mb-3"></i>
+                        <h5 class="card-title fw-bolder text-dark">Auxílio Maternidade</h5>
+                        <p class="card-text">Atuamos na liberação do auxílio maternidade.</p>
+                        <a href="https://wa.me/5542991318483?text=Olá,%20gostaria%20de%20solicitar%20a%20revisão%20de%20um%20contrato%20de%20financiamento%20de%20veículos." class="btn btn-dark text-white text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-gender-female me-2"></i> Call to action
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>           
+<!-- Seção Sobre -->
+<section class="bg-light py-5 border-bottom" id="sobre">
+    <div class="container px-5 my-5">
+        <div class="row align-items-center">
+            <!-- Coluna da Imagem -->
+            <div class="col-12 col-md-4 text-center imagem" data-aos="fade-right" data-aos-duration="1000">
+                <img src="https://tabatamiqueletti.com/wp-content/uploads/2024/06/Design-sem-nome-2-e1719323722227-768x1110.jpg" alt="Foto de Tábata Miqueletti" class="img-fluid shadow-sm" style="width: 100%;">
+            </div>
+            <!-- Coluna do Texto -->
+            <div class="col-12 col-md-8" data-aos="fade-left" data-aos-duration="1000">
+                <h2 class="mb-4">Tábata Miqueletti</h2>
+                <p>Tábata Miqueletti é uma advogada brasileira que atua em todo o país, conhecida por sua efetividade em casos judiciais. Com sua vasta experiência em questões jurídicas, ela tem ajudado mais de 10 mil pessoas a chegarem à justiça e garantir seus direitos.</p>
+                <p>Ao longo de sua carreira, Tábata tem se destacado por sua confiança e conhecimento especializado em diversas áreas do direito, incluindo direito financeiro, tributário e do consumidor, entre outras. Sua abordagem prática e direta tem sido fundamental para seus clientes, que confiam em seu trabalho e expertise para resolver suas questões legais de maneira eficaz e justa.</p>
+                <p>Além disso, Tábata tem se dedicado a defender os direitos dos mais vulneráveis, trabalhando em causas sociais e humanitárias. Sua atuação ativa em questões de proteção aos direitos humanos e justiça social tem sido amplamente reconhecida, colocando-a como uma referência para muitos.</p>
+                <p>Graças ao seu compromisso com a efetividade e justiça, Tábata Miqueletti é amplamente respeitada como uma das mais destacadas advogadas do país. Sua atuação tem beneficiado milhares de pessoas em todo o Brasil, fazendo dela uma verdadeira defensora dos direitos individuais e coletivos. Seus clientes, e todos os que tiveram a oportunidade de trabalhar com ela, sabem que podem confiar em seu trabalho para defender seus interesses e garantir os resultados desejados.</p>
+                <h4 class="mt-4">Conheça as redes de Tábata</h4>
+                <!-- Links para Redes Sociais -->
+                <div class="d-flex mt-3">
+                    <a href="https://instagram.com/tabatamiquelettii" target="_blank" class="btn btn-outline-secondary me-2">
+                        <i class="bi bi-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.facebook.com/tabatamiquelettiadvogada?mibextid=ZbWKwL" target="_blank" class="btn btn-outline-secondary me-2">
+                        <i class="bi bi-facebook"></i> Facebook
+                    </a>
+                    <a href="https://www.linkedin.com/in/t%C3%A1bata-miqueletti-250b299b/" target="_blank" class="btn btn-outline-secondary me-2">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://wa.me/554291318483?text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20seus%20serviços" target="_blank" class="btn btn-outline-secondary">
+                        <i class="bi bi-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>       
+<!-- Seção mapa com localização -->
+<section class="py-5 border-bottom" id="mapa">
+    <div class="container px-5 my-5 px-5">
+        <h2 class="mb-4 text-center">Localização do Escritório</h2>
+        <div id="map" style="width: 100%; height: 400px; background-color: #eaeaea;"></div>
+    </div>
+</section>       
+<!-- Seção Para Captura de LEADS -->
+<section class="bg-light py-5">
+    <section class="py-5" id="formulario">
+        <div class="container px-5 my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <!-- Título com botão de expansão -->
+                    <h2 class="fw-bolder mb-4 text-center" id="titulo" style="cursor: pointer;">Fale Conosco</h2>
+                    
+                    <!-- Formulário inicialmente oculto -->
+                    <div id="formularioConteudo" style="display: none;">
+                        <form id="leadForm">
+                            <div class="form-group mb-3">
+                                <label for="nome" class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Seu nome completo" required />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="Seu e-mail" required />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="telefone" placeholder="Seu telefone" required />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="mensagem" class="form-label">Mensagem</label>
+                                <textarea class="form-control" id="mensagem" rows="4" placeholder="Descreva o seu problema" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-lg w-100 mt-3">Enviar Solicitação</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<!-- Footer-->
+<footer>
+    <div class="footer-container" id="contato">
+        <!-- Imagem à esquerda -->
+        <div class="footer-left">
+        <img src="https://tabatamiqueletti.com/wp-content/uploads/2023/03/logo.png" alt="Logo" class="footer-logo" style="width: 150px;">
+        </div>
+        
+        <!-- Contatos no centro -->
+        <div class="footer-center">
+        <h3>CONTATOS</h3>
+        <p><i class="fas fa-phone-alt"></i> (42) 99116-7928</p>
+        <p><i class="fas fa-envelope"></i> email@dominio.com</p>
+        </div>
+    
+        <!-- Endereço à direita -->
+        <div class="footer-right">
+        <h3>ENDEREÇO</h3>
+        <p>Rua Exemplo, Cidade Exemplo</p>
+        </div>
+    </div>
+</footer>
+ <!-- Script para efeito transição SOBRE -->
+<script>
+        AOS.init({
+            once: false, // Permite que a animação se repita ao rolar para dentro do frame novamente
+        });
+
+        AOS.init({
+            once: false,
+            offset: 120, // Ativa a animação quando o elemento estiver 120px visível
+        });
+</script>
+<!-- Script rolagem tela -->
+<script>
+
+        let lastScrollTop = 0; // Armazena a posição de rolagem anterior
+
+        // Função para verificar se o footer está visível na tela
+        function checkFooterVisibility() {
+        const footer = document.querySelector('footer');
+        const footerPosition = footer.getBoundingClientRect().top; // Posição do footer
+        const windowHeight = window.innerHeight;
+
+        // Detecta a direção da rolagem
+        if (footerPosition < windowHeight) {
+            footer.classList.add('visible'); // Adiciona a classe 'visible'
+        } else {
+            footer.classList.remove('visible'); // Remove a classe 'visible' se não visível
+        }
+        }
+
+        // Detecta o evento de rolagem
+        window.addEventListener('scroll', function() {
+        // Verifica a direção da rolagem
+        let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Se o usuário estiver rolando para baixo ou para cima
+        if (currentScrollTop > lastScrollTop) {
+            // Rolagem para baixo: Verificar visibilidade do footer
+            checkFooterVisibility();
+        } else {
+            // Rolagem para cima: Verificar visibilidade do footer
+            checkFooterVisibility();
+        }
+
+        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Impede valores negativos
+        });
+
+        // Executa a função ao carregar a página
+        document.addEventListener('DOMContentLoaded', checkFooterVisibility);
+
+
+</script>
+<!-- Script esconder FORM-->
+<script>
+    // Seleciona o título e o conteúdo do formulário
+    const titulo = document.getElementById('titulo');
+    const formularioConteudo = document.getElementById('formularioConteudo');
+    
+    // Adiciona um evento de clique no título
+    titulo.addEventListener('click', function() {
+        // Verifica se o formulário está visível ou não
+        if (formularioConteudo.style.display === "none" || formularioConteudo.style.display === "") {
+            // Expande o formulário
+            formularioConteudo.style.display = "block";
+            formularioConteudo.style.maxHeight = formularioConteudo.scrollHeight + "px"; // Define altura máxima para a transição
+        } else {
+            // Recolhe o formulário
+            formularioConteudo.style.maxHeight = "0";
+            setTimeout(() => {
+                formularioConteudo.style.display = "none"; // Esconde completamente após a transição
+            }, 500); // Tempo de espera para a animação de transição
+        }
+    });
+</script>
+<!-- API MAPA CHAVE -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOSuLd-yd2Bxa7w98Zbs1oHu9GqL0CH38&callback=initMap"></script>
+<!-- Script mapa Iniciar -->
+<script>
+          
+
+    // Inicializa o mapa
+        function initMap() {
+        const officeLocation = { lat: -24.337000, lng: -50.622299 }; // Coordenadas do escritório
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15, // Nível de zoom
+            center: officeLocation,
+        });
+
+        // Adiciona um marcador no mapa
+        const pingIcon = {
+            url: "https://upload.wikimedia.org/wikipedia/commons/3/36/Red_dot.svg", // Um ícone simples de ponto vermelho
+            scaledSize: new google.maps.Size(30, 30),
+            anchor: new google.maps.Point(15, 15),
+        };
+
+        new google.maps.Marker({
+            position: officeLocation,
+            map: map,
+            title: "Escritório Miqueletti",
+            icon: pingIcon, // Aplica o ícone de ping
+        });
+    }
+      
+    
+        // Inicializa o mapa
+        function initMap() {
+            const officeLocation = { lat: -24.337000, lng: -50.622299 }; // Coordenadas do escritório
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15, // Nível de zoom
+                center: officeLocation,
+            });
+
+            // Adiciona um marcador no mapa
+            new google.maps.Marker({
+                position: officeLocation,
+                map: map,
+                title: "Escritório Miqueletti",
+            });
+        }
+
+        // Cria a InfoWindow com informações sobre o local
+        const infoWindowContent = `
+            <div>
+                <h3>Escritório Miqueletti</h3>
+                <p>Localizado em Telêmaco Borba, Paraná</p>
+                <p>Para mais informações, entre em contato conosco!</p>
+            </div>
+        `;
+        const infoWindow = new google.maps.InfoWindow({
+            content: infoWindowContent,
+        });
+
+        // Exibe a InfoWindow automaticamente assim que o mapa é carregado
+        infoWindow.open(map, marker); // Abre a InfoWindow no mapa, vinculada ao marcador
+
+   
+
+</script>
+<!-- função esconder Serviços -->
+<script>  
+
+            document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card-item');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('hidden');
+                    }
+                });
+            }, {
+                threshold: 0.5 // Quando 50% do card estiver visível
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+});
+
+</script> 
+    </body>
+</html>
