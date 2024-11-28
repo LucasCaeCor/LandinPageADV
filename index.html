@@ -83,7 +83,7 @@
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
             }
 
-            
+     
             img {
                 max-width: 100%;
                 height: auto;
@@ -117,35 +117,35 @@
          
     </head>
     <body>
-        <!-- Responsive navbar -->
-        <section>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="#mapa">Advocacia Miquelleti</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="index.html">Home</a>
-                            </li>         
-                            <!-- Menu expansível -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categorias
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#sobre"><i class="bi bi-person-circle " style="padding: 5px;"></i> Sobre</a></li>
-                                    <li><a class="dropdown-item" href="#contato"><i class="bi bi-telephone-fill" style="padding: 5px;"></i> Contatos</a></li>
-                                    <li><a class="dropdown-item" href="#servicos"><i class="bi bi-briefcase-fill" style="padding: 5px;"></i> Serviços</a></li>
-                                </ul>
-                            </li>
+<!-- Responsive navbar -->
+<section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#mapa">Advocacia Miquelleti</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                    </li>         
+                    <!-- Menu expansível -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#sobre"><i class="bi bi-person-circle " style="padding: 5px;"></i> Sobre</a></li>
+                            <li><a class="dropdown-item" href="#contato"><i class="bi bi-telephone-fill" style="padding: 5px;"></i> Contatos</a></li>
+                            <li><a class="dropdown-item" href="#servicos"><i class="bi bi-briefcase-fill" style="padding: 5px;"></i> Serviços</a></li>
                         </ul>
-                    </div>
-                </div>
-            </nav>
-        </section>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
 <!-- Header-->
 <header class="py-5" style="background-image: url('https://tabatamiqueletti.com/wp-content/uploads/2024/06/Design-sem-nome-14.jpg'); background-size: cover; background-position: center;">
     <div class="container px-5">
@@ -166,9 +166,9 @@
 <!-- Seção para os SERVIÇOS -->
 <section class="py-5 border-bottom" id="servicos">
     <div class="container px-5 my-5">
-        <div class="row gx-4 gx-sm-5">
+        <div class="row gx-4 gx-sm-5 ">
             <!-- Revisão de Contrato de Financiamentos de Veículos -->
-            <div class="col-12 col-sm-6 col-md-4 mb-4 card-item hidden" id="card1">
+            <div class="col-12 col-sm-6 col-md-4 mb-4 card-item" id="card1">
                 <div class="card border-dark rounded-3 shadow-lg">
                     <div class="card-body text-center">
                         <i class="bi bi-truck fs-1 mb-3"></i>
@@ -389,41 +389,46 @@
 <!-- Script rolagem tela -->
 <script>
 
-        let lastScrollTop = 0; // Armazena a posição de rolagem anterior
+let lastScrollTop = 0; // Armazena a posição de rolagem anterior
+let isScrolling = false; // Para debounce
 
-        // Função para verificar se o footer está visível na tela
-        function checkFooterVisibility() {
-        const footer = document.querySelector('footer');
-        const footerPosition = footer.getBoundingClientRect().top; // Posição do footer
-        const windowHeight = window.innerHeight;
+// Função para verificar se o footer está visível na tela
+function checkFooterVisibility() {
+    const footer = document.querySelector('footer');
+    if (!footer) return; // Certifique-se de que o footer existe
+    const footerPosition = footer.getBoundingClientRect().top; // Posição do footer
+    const windowHeight = window.innerHeight;
 
-        // Detecta a direção da rolagem
-        if (footerPosition < windowHeight) {
-            footer.classList.add('visible'); // Adiciona a classe 'visible'
-        } else {
-            footer.classList.remove('visible'); // Remove a classe 'visible' se não visível
-        }
-        }
+    // Verifica se o footer está visível
+    if (footerPosition < windowHeight) {
+        footer.classList.add('visible'); // Adiciona a classe 'visible'
+    } else {
+        footer.classList.remove('visible'); // Remove a classe 'visible' se não visível
+    }
+}
 
-        // Detecta o evento de rolagem
-        window.addEventListener('scroll', function() {
-        // Verifica a direção da rolagem
-        let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// Função debounce para limitar a execução
+function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
 
-        // Se o usuário estiver rolando para baixo ou para cima
-        if (currentScrollTop > lastScrollTop) {
-            // Rolagem para baixo: Verificar visibilidade do footer
-            checkFooterVisibility();
-        } else {
-            // Rolagem para cima: Verificar visibilidade do footer
-            checkFooterVisibility();
-        }
+// Detecta o evento de rolagem com debounce
+window.addEventListener('scroll', debounce(() => {
+    let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+    // Só verifica a visibilidade se houver rolagem
+    if (currentScrollTop !== lastScrollTop) {
+        checkFooterVisibility();
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // Impede valores negativos
-        });
+    }
+}, 100)); // Ajuste o tempo de debounce conforme necessário (100ms neste exemplo)
 
-        // Executa a função ao carregar a página
-        document.addEventListener('DOMContentLoaded', checkFooterVisibility);
+// Executa a função ao carregar a página
+document.addEventListener('DOMContentLoaded', checkFooterVisibility);
 
 
 </script>
@@ -513,27 +518,6 @@
    
 
 </script>
-<!-- função esconder Serviços -->
-<script>  
-
-            document.addEventListener('DOMContentLoaded', function () {
-            const cards = document.querySelectorAll('.card-item');
-            
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.remove('hidden');
-                    }
-                });
-            }, {
-                threshold: 0.5 // Quando 50% do card estiver visível
-            });
-
-            cards.forEach(card => {
-                observer.observe(card);
-            });
-});
-
 </script> 
     </body>
 </html>
